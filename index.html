@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ジブリの物語を旅する - 永久保存版</title>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0; padding: 0;
+            font-family: "Zen Antique Soft", serif;
+            color: #2c3e50;
+            background-color: #f4f1ea;
+            overflow-x: hidden;
+        }
+
+        /* パララックス効果 */
+        .section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            padding: 80px 20px;
+        }
+
+        /* セクション背景 */
+        #hero { background-image: url('images/main.jpg'); }
+        #rank1 { background-image: url('images/mononoke.jpg'); }
+        #rank2 { background-image: url('images/sentochihiro.jpg'); }
+        #rank3 { background-image: url('images/laputa.jpg'); }
+
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        /* コンテンツカードのスライド演出 */
+        .content-card {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px;
+            max-width: 800px;
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateX(-150px); /* 左からスライド */
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* スクロール時にクラスを付与 */
+        .visible .content-card {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        h1 { font-size: 4rem; color: #fff; text-shadow: 0 4px 15px rgba(0,0,0,0.6); z-index: 2; text-align: center; }
+        h2 { font-size: 2.6rem; margin-bottom: 30px; border-bottom: 2px solid #2c3e50; padding-bottom: 10px; }
+        h3 { color: #8b4513; margin-top: 35px; font-size: 1.5rem; border-left: 5px solid #8b4513; padding-left: 15px; }
+        p { line-height: 2.2; text-align: justify; margin-bottom: 25px; font-size: 1.1rem; }
+        .highlight { background: linear-gradient(transparent 70%, #fff176 70%); font-weight: bold; }
+
+        /* クイズエリア */
+        #quiz-section { background: #2c3e50; color: white; padding: 100px 20px; text-align: center; }
+        .quiz-box { background: white; color: #333; max-width: 750px; margin: 0 auto; padding: 50px; border-radius: 15px; display: none; }
+        .quiz-box.active { display: block; animation: slideUp 0.6s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .opt-btn {
+            display: block; width: 100%; padding: 18px; margin: 12px 0;
+            background: #fdfcf9; border: 1px solid #ddd; cursor: pointer;
+            font-family: inherit; font-size: 1.1rem; transition: 0.3s; border-radius: 8px;
+        }
+        .opt-btn:hover { background: #f0ede4; border-color: #8b4513; }
+
+        /* 上からスライドしてくるボタン */
+        #btn-top {
+            position: fixed; top: -100px; right: 30px;
+            width: 70px; height: 70px; background: #2c3e50; color: white;
+            border: 2px solid white; border-radius: 50%; cursor: pointer; z-index: 1000;
+            font-size: 24px; transition: top 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+        #btn-top.show { top: 30px; }
+    </style>
+</head>
+<body>
+
+    <div id="hero" class="section">
+        <div class="overlay"></div>
+        <h1>ジブリの情景を旅する</h1>
+    </div>
+
+    <div id="rank1" class="section">
+        <div class="overlay"></div>
+        <div class="content-card">
+            <h2>１位　もののけ姫</h2>
+            <h3>【あらすじ】</h3>
+            <p>村を襲うタタリ神を倒し、死の呪いを受けた少年アシタカ。彼は自らの運命を変えるため、西の地へと旅立ちます。そこで出会ったのは、森を侵食する人間たちと、山犬の娘として生きる少女「サン」。神々と人間、そしてサンの間で、アシタカは<span class="highlight">「曇りなき眼（まなこ）」</span>で真実を見つめようとします。</p>
+            <h3>【宮崎駿監督の思い・テーマ】</h3>
+            <p>「生きろ。」という短い言葉に全てが凝縮されています。善悪を割り切れない世界で、憎しみの連鎖をどう断ち切るか。監督は、自然を単なる美しい守るべき対象としてではなく、時に荒々しく恐ろしい「神」として描き、人間との壮絶な対立を通じて、共生への問いを投げかけました。</p>
+            <h3>【制作秘話】</h3>
+            <p>構想16年、作画枚数14万4千枚。当時の日本アニメーションの限界に挑んだ作品です。宮崎監督はあまりのハードワークに腱鞘炎になりながらも、ほとんどのカットのリテイクを自ら手掛けました。また、クライマックスのシシ神の森の崩壊シーンは、現代のCGと伝統的な手書き作画が見事に融合した歴史的瞬間です。</p>
+        </div>
+    </div>
+
+    <div id="rank2" class="section">
+        <div class="overlay"></div>
+        <div class="content-card">
+            <h2>２位　千と千尋の神隠し</h2>
+            <h3>【あらすじ】</h3>
+            <p>引っ越しの途中で不思議な世界へ迷い込んだ10歳の少女・千尋。豚にされた両親を救うため、魔女・湯婆婆が支配する巨大な湯屋「油屋」で働くことになります。名前を奪われ「千」と呼ばれながらも、千尋は様々な神々やハクとの出会いを通じて、<span class="highlight">眠っていた自らの力</span>を呼び覚ましていきます。</p>
+            <h3>【宮崎駿監督の思い・テーマ】</h3>
+            <p>今の日本に住む普通の10歳の女の子たちが、本当に求めている物語を作りたいという思いからスタートしました。監督は「名前」を個人の尊厳、アイデンティティの象徴として描き、他者に支配されそうになっても自分を見失わないことの大切さを伝えました。</p>
+            <h3>【制作秘話】</h3>
+            <p>劇中の「油屋」は、特定のモデルがあるわけではなく、日本の様々な建築様式が混ざり合った架空の建物です。監督はスタッフに対し、「ここには迷路のような奥行きと、神様たちの体臭が漂うような生々しさが必要だ」と指示しました。また、ラストのハクの名前を思い出すシーンの浮遊感は、アニメーションならではの魔法のような表現です。</p>
+        </div>
+    </div>
+
+    <div id="rank3" class="section">
+        <div class="overlay"></div>
+        <div class="content-card">
+            <h2>３位　天空の城ラピュタ</h2>
+            <h3>【あらすじ】</h3>
+            <p>空から降ってきた不思議な少女・シータと、見習い機械工の少年・パズー。二人は、シータが持つ青く光る石「飛行石」をめぐり、空賊ドーラ一家や軍隊のムスカと争いながら、伝説の浮遊島「ラピュタ」を目指します。青い空と雲の先にあるのは、栄華を極めた文明の残滓と、<span class="highlight">自然に還った静かな城</span>でした。</p>
+            <h3>【宮崎駿監督の思い・テーマ】</h3>
+            <p>「土に根をおろし、風と共に生きよう。種と共に冬を越え、鳥と共に春を歌おう。」このシータの言葉に、監督の文明批評が込められています。どんなに優れた技術を持とうとも、人間は土から離れては生きられないという、普遍的な心理を描き出しました。</p>
+            <h3>【制作秘話】</h3>
+            <p>スタジオジブリの設立第1作目。監督は「子どもたちがワクワクして、終わった後に元気になれる映画を」と、王道のアドベンチャーを目指しました。劇中の炭鉱の町は、ウェールズの廃坑を監督自身がロケハンし、そこに住む人々の誇りと厳しさを背景に反映させました。有名な「バルス」のシーンの崩壊シーンは、CGのない時代に全て手書きで緻密に計算されたものです。</p>
+        </div>
+    </div>
+
+    <div id="quiz-section">
+        <h2>🎬 ジブリ理解度テスト（全10問）</h2>
+        <div id="quiz-container"></div>
+        <div id="quiz-final" style="display:none; font-size: 2.5rem; margin-top: 30px;"></div>
+    </div>
+
+    <button id="btn-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">▲</button>
+
+    <script>
+        // スライド演出の監視
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.2 });
+        document.querySelectorAll('.section').forEach(s => obs.observe(s));
+
+        // 上から降ってくるボタンの制御
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('btn-top');
+            (window.scrollY > 800) ? btn.classList.add('show') : btn.classList.remove('show');
+        });
+
+        // クイズデータ
+        const quizData = [
+            { q: "『もののけ姫』のアシタカが、タタリ神を倒して受けたのは？", a: ["褒美", "呪い", "贈り物", "魔法"], c: 1 },
+            { q: "千と千尋で、千尋が働く湯屋の名前は？", a: ["銭湯屋", "八百万屋", "油屋", "神隠し屋"], c: 2 },
+            { q: "ラピュタで、シータが持っている光る石の名前は？", a: ["魔法石", "飛行石", "浮遊石", "ラピュタ石"], c: 1 },
+            { q: "『もののけ姫』の制作にかかった作画枚数は約何万枚？", a: ["5万枚", "10万枚", "14万枚", "20万枚"], c: 2 },
+            { q: "『千と千尋』で、自分の名前を忘れないよう千尋に助言したのは？", a: ["ハク", "釜爺", "坊", "カオナシ"], c: 0 },
+            { q: "ラピュタで、パズーとシータが逃げる時に協力した空賊の名前は？", a: ["ムスカ", "ポルコ", "ドーラ", "フィオ"], c: 2 },
+            { q: "ラピュタを崩壊させる、滅びの呪文は何？", a: ["ルシータ", "パルプンテ", "バルス", "テト"], c: 2 },
+            { q: "千と千尋のモデルの一部とされる、江戸東京たてもの園にあるお風呂屋さんは？", a: ["子宝湯", "黄金湯", "極楽湯", "神の湯"], c: 0 },
+            { q: "『ラピュタ』の炭鉱町のロケ地になった国はどこ？", a: ["イギリス", "イタリア", "フランス", "ドイツ"], c: 0 },
+            { q: "宮崎駿監督が「もののけ姫」で伝えたかった言葉は？", a: ["働け。", "遊べ。", "生きろ。", "戦え。"], c: 2 }
+        ];
+
+        let cur = 0, score = 0;
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = "";
+            if(cur < quizData.length) {
+                const data = quizData[cur];
+                const box = document.createElement('div');
+                box.className = "quiz-box active";
+                box.innerHTML = `<p style="font-size:1.3rem; margin-bottom:20px;">第 ${cur+1} 問</p><p style="font-size:1.5rem; font-weight:bold;">${data.q}</p>` + 
+                    data.a.map((opt, i) => `<button class="opt-btn" onclick="check(${i})">${opt}</button>`).join('');
+                container.appendChild(box);
+            } else {
+                const fin = document.getElementById('quiz-final');
+                fin.style.display = "block";
+                fin.innerHTML = `満願成就！<br>正解数は ${score} / 10 でした。`;
+            }
+        }
+        window.check = (i) => {
+            if(i === quizData[cur].c) score++;
+            cur++;
+            renderQuiz();
+        };
+        renderQuiz();
+    </script>
+</body>
+</html>
